@@ -15,7 +15,7 @@ func gateway(){
 	route.Route(router)
 	router.GET("/", func(c *gin.Context) {
 	})
-	http.ListenAndServe(":9900", router)
+	http.ListenAndServe(":8000", router)
 }
 
 
