@@ -1,3 +1,6 @@
+##################################################################################################
+# window  入口网关
+##################################################################################################
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
@@ -13,22 +16,4 @@ spec:
     hosts:
     - "*"
 ---
-apiVersion: networking.istio.io/v1alpha3
-kind: VirtualService
-metadata:
-  name: window
-spec:
-  hosts:
-  - "*"
-  gateways:
-  - window-gateway
-  http:
-  - match:
-    - uri:
-        exact: /show
-    route:
-    - destination:
-        host: window.default.svc.cluster.local
-        port:
-          number: 9000
-          
+

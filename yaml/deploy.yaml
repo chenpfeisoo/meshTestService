@@ -47,7 +47,7 @@ spec:
         image: chenpengfei/gateway:v1
         imagePullPolicy: IfNotPresent
         ports:
-        - containerPort: 8000
+        - containerPort: 9000
         volumeMounts:
         - name: tmp
           mountPath: /tmp
