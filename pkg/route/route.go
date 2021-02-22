@@ -10,15 +10,15 @@ import (
 
 const (
 	service_B_domain = "http://show:9000"
-	v1 ="v1"
-	v2 ="v2"
+	v1               = "v1"
+	v2               = "v2"
 )
 
-func show()*CodeMessage {
+func show() *CodeMessage {
 	client := &http.Client{}
 	request, _ := http.NewRequest("GET", service_B_domain, nil)
 	response, _ := client.Do(request)
-	if response!=nil{
+	if response != nil {
 		if response.StatusCode == 200 {
 			body, _ := ioutil.ReadAll(response.Body)
 			if strings.Contains(string(body), v1) {
@@ -33,7 +33,7 @@ func show()*CodeMessage {
 				}
 			}
 		}
-	}else{
+	} else {
 		return nil
 	}
 
@@ -41,7 +41,7 @@ func show()*CodeMessage {
 }
 
 type CodeMessage struct {
-	Code    int `json:"code"`
+	Code    int    `json:"code"`
 	Version string `json:"version"`
 }
 
@@ -50,15 +50,15 @@ func (c *CodeMessage) ToJsonString() string {
 	return string(b)
 }
 func print(c *gin.Context) {
-	cm:=show()
-	if cm!=nil{
-		if cm.Version==v1{
-			c.String(200,v1)
-		}else if cm.Version==v2{
-			c.String(200,v2)
+	cm := show()
+	if cm != nil {
+		if cm.Version == v1 {
+			c.String(200, v1)
+		} else if cm.Version == v2 {
+			c.String(200, v2)
 		}
-	}else{
-		c.String(500,"not find page")
+	} else {
+		c.String(500, "not find page")
 	}
 }
 func Route(r *gin.Engine) {
