@@ -28,7 +28,6 @@ apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   name: show
-  namespace: 
 spec:
   hosts:
   - show.default.svc.cluster.local
@@ -37,7 +36,7 @@ spec:
   http:
   - match:
     - uri:
-        exact: window.default.svc.cluster.local 
+        exact: / 
     route:
     - destination:
         host: show.default.svc.cluster.local
